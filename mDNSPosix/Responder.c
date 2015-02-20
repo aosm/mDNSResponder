@@ -432,6 +432,7 @@ static mStatus RegisterOneService(const char *  richTextName,
     if (thisServ == NULL) {
         status = mStatus_NoMemoryErr;
     }
+    memset(thisServ, 0, sizeof(*thisServ)); //prevents segfault for uninitialized members
     if (status == mStatus_NoError) {
         MakeDomainLabelFromLiteralString(&name,  richTextName);
         MakeDomainNameFromDNSNameString(&type, serviceType);
